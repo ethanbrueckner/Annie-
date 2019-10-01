@@ -1,0 +1,22 @@
+1int motorPin = 3;
+2 
+3void setup() 
+4{ 
+5  pinMode(motorPin, OUTPUT);
+6  Serial.begin(9600);
+7  while (! Serial);
+8  Serial.println("Speed 0 to 255");
+9} 
+10 
+11 
+12void loop() 
+13{ 
+14  if (Serial.available())
+15  {
+16    int speed = Serial.parseInt();
+17    if (speed >= 0 && speed <= 255)
+18    {
+19      analogWrite(motorPin, speed);
+20    }
+21  }
+22}
